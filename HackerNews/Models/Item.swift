@@ -20,12 +20,14 @@ class Item: Codable, Equatable {
     let url: URL?
     let parent: Int?
     let title: String?
+    let score: Int?
+
+    var children: [Item]? = [Item]()
 
     // For the purposes of this project, we're only using stories and comments
     // which have all of these properties
     let type: ItemType
     let by: String
-    let score: Int
     let time: Date
 
     var points: String {
@@ -33,7 +35,7 @@ class Item: Codable, Equatable {
         if self.score == 1 {
             descriptor = "point"
         }
-        return "\(self.score) \(descriptor)"
+        return "\(self.score ?? 0) \(descriptor)"
     }
 
     var subtitle: String {

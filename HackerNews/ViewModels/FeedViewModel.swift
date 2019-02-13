@@ -24,7 +24,7 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
     private let itemRepository: ItemRepositoryProtocol
     weak var delegate: FeedViewModelDelegate?
 
-    private let newStoryIds = Variable<[Int]>([])
+    private let storyIds = Variable<[Int]>([])
     let stories = Variable<[Item]>([])
 
     private let disposeBag = DisposeBag()
@@ -36,7 +36,7 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
     }
 
     private func addBindings() {
-        self.newStoryIds.asObservable()
+        self.storyIds.asObservable()
             .bind { [weak self] (ids) in
                 self?.getFirstStories()
             }.disposed(by: self.disposeBag)
@@ -44,26 +44,40 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
 
     func getTopStories() {
         self.itemRepository.getTopStories { [weak self] (ids) in
-            self?.newStoryIds.value = ids
+            self?.storyIds.value = ids
         }
     }
 
     private func getFirstStories() {
-        let limit = (min(self.newStoryIds.value.count, 30))
+        let limit = (min(self.storyIds.value.count, 30))
         guard limit != 0 else { return }
 
         for i in 0...limit {
-            let id = self.newStoryIds.value[i]
+            let id = self.storyIds.value[i]
             self.getItem(id)
-            self.itemRepository.getItem(id) { (item) in
-                self.stories.value.append(item)
-            }
         }
     }
 
-    func getItem(_ id: Int) {
+    private func getItem(_ id: Int) {
         self.itemRepository.getItem(id) { (story) in
             self.stories.value.append(story)
+
+            self.getChildren(story)
+        }
+    }
+
+    private func getChildren(_ item: Item) {
+        if let kids = item.kids {
+            for id in kids {
+                self.itemRepository.getItem(id) { (kid) in
+                    if item.children != nil {
+                        item.children?.append(kid)
+                    } else {
+                        item.children = [kid]
+                    }
+                    self.getChildren(kid)
+                }
+            }
         }
     }
 

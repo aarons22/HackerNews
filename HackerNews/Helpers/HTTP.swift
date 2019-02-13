@@ -35,6 +35,7 @@ class HTTP: HTTPProtocol {
                             let mapped = try? JSONDecoder().decode(I.self, from: data) {
                             completion(.success(mapped))
                         } else {
+                            // TODO
 //                            completion(.failure(""))
                         }
                     })
