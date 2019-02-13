@@ -9,21 +9,23 @@
 import RxSwift
 import RxCocoa
 
-protocol FeedViewModelProtocol {
+protocol FeedViewModelProtocol: UITableViewDelegate, UITableViewDataSource {
+    var stories: Variable<[Story]> { get }
+
     func getTopStories()
 }
 
-class FeedViewModel: FeedViewModelProtocol {
+class FeedViewModel: NSObject, FeedViewModelProtocol {
     private let itemRepository: ItemRepositoryProtocol
 
     private let newStoryIds = Variable<[Int]>([])
-    private let stories = Variable<[Story]>([])
+    let stories = Variable<[Story]>([])
 
     private let disposeBag = DisposeBag()
 
     init(itemRepository: ItemRepositoryProtocol = ItemRepository()) {
         self.itemRepository = itemRepository
-
+        super.init()
         self.addBindings()
     }
 
@@ -31,10 +33,9 @@ class FeedViewModel: FeedViewModelProtocol {
         self.newStoryIds.asObservable()
             .bind { [weak self] (ids) in
                 if let id = ids.first {
-
+                    self?.getItem(id)
                 }
             }.disposed(by: self.disposeBag)
-
     }
 
     func getTopStories() {
@@ -47,5 +48,22 @@ class FeedViewModel: FeedViewModelProtocol {
         self.itemRepository.getItem(id) { (story) in
             self.stories.value.append(story)
         }
+    }
+
+    // MARK: UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.stories.value.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: StoryTableViewCell.self),
+                                                       for: indexPath) as? StoryTableViewCell else {
+                                                        return UITableViewCell()
+        }
+
+        let story = self.stories.value[indexPath.row]
+        cell.display(story)
+        return cell
     }
 }
