@@ -32,15 +32,23 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
     private func addBindings() {
         self.newStoryIds.asObservable()
             .bind { [weak self] (ids) in
-                if let id = ids.first {
-                    self?.getItem(id)
-                }
+                self?.getFirstStories()
             }.disposed(by: self.disposeBag)
     }
 
     func getTopStories() {
         self.itemRepository.getTopStories { [weak self] (ids) in
             self?.newStoryIds.value = ids
+        }
+    }
+
+    private func getFirstStories() {
+        let limit = (min(self.newStoryIds.value.count, 20))
+        guard limit != 0 else { return }
+
+        for i in 0...limit {
+            let id = self.newStoryIds.value[i]
+            self.getItem(id)
         }
     }
 

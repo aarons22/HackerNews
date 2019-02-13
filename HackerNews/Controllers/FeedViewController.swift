@@ -50,6 +50,7 @@ class FeedViewController: UIViewController {
         self.view.addSubview(tableView)
         self.tableView.delegate = self.viewModel
         self.tableView.dataSource = self.viewModel
+        self.tableView.separatorInset = .zero
         self.tableView.register(StoryTableViewCell.self, forCellReuseIdentifier: String(describing: StoryTableViewCell.self))
         self.tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view.safeAreaInsets)

@@ -9,8 +9,61 @@
 import UIKit
 
 class StoryTableViewCell: UITableViewCell {
+    let stackView = UIStackView()
+    let lowerStackView = UIStackView()
+    let titleLabel = UILabel()
+    let pointsLabel = UILabel()
+    let byLabel = UILabel()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.setupStackView()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func setupStackView() {
+        self.addSubview(self.stackView)
+        self.stackView.axis = .vertical
+        self.stackView.spacing = 5
+        self.stackView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview().inset(10)
+        }
+
+        self.setupTitleLabel()
+        self.setupLowerStackView()
+    }
+
+    private func setupTitleLabel() {
+        self.stackView.addArrangedSubview(self.titleLabel)
+        self.titleLabel.numberOfLines = 2
+        self.titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
+    }
+
+    private func setupLowerStackView() {
+        self.stackView.addArrangedSubview(self.lowerStackView)
+        self.lowerStackView.axis = .horizontal
+        self.lowerStackView.spacing = 5
+        self.lowerStackView.distribution = .equalSpacing
+
+        self.setupPointsLabel()
+        self.setupByLabelLabel()
+    }
+
+    private func setupPointsLabel() {
+        self.lowerStackView.addArrangedSubview(self.pointsLabel)
+        self.pointsLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
+    }
+
+    private func setupByLabelLabel() {
+        self.lowerStackView.addArrangedSubview(self.byLabel)
+    }
 
     func display(_ story: Story) {
-        self.textLabel?.text = story.title
+        self.titleLabel.text = story.title
+        self.pointsLabel.text = "\(story.score) points"
+        self.byLabel.text = "by \(story.by)"
     }
 }
