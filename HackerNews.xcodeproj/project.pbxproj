@@ -31,6 +31,10 @@
 		C0C0D28B2213CA4E001AA671 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2892213CA4E001AA671 /* WebViewController.swift */; };
 		C0C0D28D2213CDCA001AA671 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D28C2213CDCA001AA671 /* Colors.swift */; };
 		C0C0D28E2213CDCA001AA671 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D28C2213CDCA001AA671 /* Colors.swift */; };
+		C0C0D2902213D330001AA671 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D28F2213D330001AA671 /* StoryViewController.swift */; };
+		C0C0D2912213D330001AA671 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D28F2213D330001AA671 /* StoryViewController.swift */; };
+		C0C0D2932213D359001AA671 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2922213D359001AA671 /* StoryViewModel.swift */; };
+		C0C0D2942213D359001AA671 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2922213D359001AA671 /* StoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +71,8 @@
 		C0C0D2862213C899001AA671 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		C0C0D2892213CA4E001AA671 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C0C0D28C2213CDCA001AA671 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		C0C0D28F2213D330001AA671 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		C0C0D2922213D359001AA671 /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,7 @@
 				C0C0D26E2213B31C001AA671 /* FeedViewController.swift */,
 				C0C0D2862213C899001AA671 /* NavigationController.swift */,
 				C0C0D2892213CA4E001AA671 /* WebViewController.swift */,
+				C0C0D28F2213D330001AA671 /* StoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -185,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				C0C0D27B2213B7C2001AA671 /* FeedViewModel.swift */,
+				C0C0D2922213D359001AA671 /* StoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -386,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0C0D2932213D359001AA671 /* StoryViewModel.swift in Sources */,
 				C0C0D27C2213B7C2001AA671 /* FeedViewModel.swift in Sources */,
 				C0C0D28D2213CDCA001AA671 /* Colors.swift in Sources */,
 				C0C0D28A2213CA4E001AA671 /* WebViewController.swift in Sources */,
@@ -394,6 +403,7 @@
 				C0C0D24F2213B2C2001AA671 /* AppDelegate.swift in Sources */,
 				C0C0D2802213C009001AA671 /* HTTP.swift in Sources */,
 				C0C0D2782213B50C001AA671 /* ItemRepository.swift in Sources */,
+				C0C0D2902213D330001AA671 /* StoryViewController.swift in Sources */,
 				C0C0D2742213B48A001AA671 /* Story.swift in Sources */,
 				C0C0D2842213C26D001AA671 /* StoryTableViewCell.swift in Sources */,
 			);
@@ -403,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0C0D2942213D359001AA671 /* StoryViewModel.swift in Sources */,
 				C0C0D27D2213B7C2001AA671 /* FeedViewModel.swift in Sources */,
 				C0C0D28E2213CDCA001AA671 /* Colors.swift in Sources */,
 				C0C0D28B2213CA4E001AA671 /* WebViewController.swift in Sources */,
@@ -411,6 +422,7 @@
 				C0C0D2642213B2C4001AA671 /* HackerNewsTests.swift in Sources */,
 				C0C0D2812213C009001AA671 /* HTTP.swift in Sources */,
 				C0C0D2792213B50C001AA671 /* ItemRepository.swift in Sources */,
+				C0C0D2912213D330001AA671 /* StoryViewController.swift in Sources */,
 				C0C0D2752213B48C001AA671 /* Story.swift in Sources */,
 				C0C0D2852213C26D001AA671 /* StoryTableViewCell.swift in Sources */,
 			);

@@ -49,7 +49,7 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
     }
 
     private func getFirstStories() {
-        let limit = (min(self.newStoryIds.value.count, 20))
+        let limit = (min(self.newStoryIds.value.count, 30))
         guard limit != 0 else { return }
 
         for i in 0...limit {

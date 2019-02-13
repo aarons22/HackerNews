@@ -34,6 +34,26 @@ class Story: Codable, Equatable {
         return nil
     }
 
+    var body: String? {
+        guard let data = self.text?.data(using: .utf8) else {
+            return nil
+        }
+
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+
+        guard let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else {
+            return nil
+        }
+        return attributedString.string
+    }
+
+    var subtitle: String {
+        return "\(self.points) by \(by)"
+    }
+
     static func == (lhs: Story, rhs: Story) -> Bool {
         return lhs.id == rhs.id
     }

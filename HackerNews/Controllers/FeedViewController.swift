@@ -67,6 +67,10 @@ extension FeedViewController: FeedViewModelDelegate {
             let viewController = WebViewController(url: url)
             let navController = NavigationController(rootViewController: viewController)
             self.navigationController?.present(navController, animated: true, completion: nil)
+        } else {
+            let viewModel = StoryViewModel(story)
+            let viewController = StoryViewController(viewModel: viewModel)
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
 }
