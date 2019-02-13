@@ -25,6 +25,12 @@
 		C0C0D2812213C009001AA671 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D27F2213C009001AA671 /* HTTP.swift */; };
 		C0C0D2842213C26D001AA671 /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2832213C26D001AA671 /* StoryTableViewCell.swift */; };
 		C0C0D2852213C26D001AA671 /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2832213C26D001AA671 /* StoryTableViewCell.swift */; };
+		C0C0D2872213C899001AA671 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2862213C899001AA671 /* NavigationController.swift */; };
+		C0C0D2882213C899001AA671 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2862213C899001AA671 /* NavigationController.swift */; };
+		C0C0D28A2213CA4E001AA671 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2892213CA4E001AA671 /* WebViewController.swift */; };
+		C0C0D28B2213CA4E001AA671 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2892213CA4E001AA671 /* WebViewController.swift */; };
+		C0C0D28D2213CDCA001AA671 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D28C2213CDCA001AA671 /* Colors.swift */; };
+		C0C0D28E2213CDCA001AA671 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D28C2213CDCA001AA671 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +64,9 @@
 		C0C0D27B2213B7C2001AA671 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		C0C0D27F2213C009001AA671 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		C0C0D2832213C26D001AA671 /* StoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
+		C0C0D2862213C899001AA671 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		C0C0D2892213CA4E001AA671 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		C0C0D28C2213CDCA001AA671 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				C0C0D26E2213B31C001AA671 /* FeedViewController.swift */,
+				C0C0D2862213C899001AA671 /* NavigationController.swift */,
+				C0C0D2892213CA4E001AA671 /* WebViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				C0C0D27F2213C009001AA671 /* HTTP.swift */,
+				C0C0D28C2213CDCA001AA671 /* Colors.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -375,6 +387,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0C0D27C2213B7C2001AA671 /* FeedViewModel.swift in Sources */,
+				C0C0D28D2213CDCA001AA671 /* Colors.swift in Sources */,
+				C0C0D28A2213CA4E001AA671 /* WebViewController.swift in Sources */,
+				C0C0D2872213C899001AA671 /* NavigationController.swift in Sources */,
 				C0C0D26F2213B31C001AA671 /* FeedViewController.swift in Sources */,
 				C0C0D24F2213B2C2001AA671 /* AppDelegate.swift in Sources */,
 				C0C0D2802213C009001AA671 /* HTTP.swift in Sources */,
@@ -389,6 +404,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0C0D27D2213B7C2001AA671 /* FeedViewModel.swift in Sources */,
+				C0C0D28E2213CDCA001AA671 /* Colors.swift in Sources */,
+				C0C0D28B2213CA4E001AA671 /* WebViewController.swift in Sources */,
+				C0C0D2882213C899001AA671 /* NavigationController.swift in Sources */,
 				C0C0D2702213B31C001AA671 /* FeedViewController.swift in Sources */,
 				C0C0D2642213B2C4001AA671 /* HackerNewsTests.swift in Sources */,
 				C0C0D2812213C009001AA671 /* HTTP.swift in Sources */,

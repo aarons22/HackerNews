@@ -9,14 +9,20 @@
 import RxSwift
 import RxCocoa
 
+protocol FeedViewModelDelegate: class {
+    func displayStory(_ story: Story)
+}
+
 protocol FeedViewModelProtocol: UITableViewDelegate, UITableViewDataSource {
     var stories: Variable<[Story]> { get }
+    var delegate: FeedViewModelDelegate? { get set }
 
     func getTopStories()
 }
 
 class FeedViewModel: NSObject, FeedViewModelProtocol {
     private let itemRepository: ItemRepositoryProtocol
+    weak var delegate: FeedViewModelDelegate?
 
     private let newStoryIds = Variable<[Int]>([])
     let stories = Variable<[Story]>([])
@@ -73,5 +79,10 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
         let story = self.stories.value[indexPath.row]
         cell.display(story)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let story = self.stories.value[indexPath.row]
+        self.delegate?.displayStory(story)
     }
 }

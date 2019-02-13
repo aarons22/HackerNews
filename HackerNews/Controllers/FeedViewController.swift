@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import WebKit
 
 class FeedViewController: UIViewController {
     let viewModel: FeedViewModelProtocol
@@ -20,6 +21,9 @@ class FeedViewController: UIViewController {
     init(viewModel: FeedViewModelProtocol = FeedViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.title = "Top Stories"
+
+        viewModel.delegate = self
 
         self.addBindings()
     }
@@ -39,7 +43,6 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.green
 
         self.setupTableView()
 
@@ -54,6 +57,16 @@ class FeedViewController: UIViewController {
         self.tableView.register(StoryTableViewCell.self, forCellReuseIdentifier: String(describing: StoryTableViewCell.self))
         self.tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view.safeAreaInsets)
+        }
+    }
+}
+
+extension FeedViewController: FeedViewModelDelegate {
+    func displayStory(_ story: Story) {
+        if let url = story.url {
+            let viewController = WebViewController(url: url)
+            let navController = NavigationController(rootViewController: viewController)
+            self.navigationController?.present(navController, animated: true, completion: nil)
         }
     }
 }

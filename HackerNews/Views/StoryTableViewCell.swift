@@ -14,6 +14,7 @@ class StoryTableViewCell: UITableViewCell {
     let titleLabel = UILabel()
     let pointsLabel = UILabel()
     let byLabel = UILabel()
+    let urlLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -46,10 +47,11 @@ class StoryTableViewCell: UITableViewCell {
         self.stackView.addArrangedSubview(self.lowerStackView)
         self.lowerStackView.axis = .horizontal
         self.lowerStackView.spacing = 5
-        self.lowerStackView.distribution = .equalSpacing
+        self.lowerStackView.distribution = .equalCentering
 
         self.setupPointsLabel()
         self.setupByLabelLabel()
+        self.setupURLLabel()
     }
 
     private func setupPointsLabel() {
@@ -61,9 +63,20 @@ class StoryTableViewCell: UITableViewCell {
         self.lowerStackView.addArrangedSubview(self.byLabel)
     }
 
+    private func setupURLLabel() {
+        self.lowerStackView.addArrangedSubview(self.urlLabel)
+        self.urlLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
+    }
+
     func display(_ story: Story) {
         self.titleLabel.text = story.title
         self.pointsLabel.text = "\(story.score) points"
         self.byLabel.text = "by \(story.by)"
+        if let host = story.urlHost {
+            self.urlLabel.text = "(via \(host))"
+            self.urlLabel.isHidden = false
+        } else {
+            self.urlLabel.isHidden = true
+        }
     }
 }

@@ -17,6 +17,14 @@ class Story: Codable, Equatable {
     let title: String
     let url: URL?
 
+    var urlHost: String? {
+        if let url = self.url,
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: true) {
+            return components.host?.replacingOccurrences(of: "www.", with: "")
+        }
+        return nil
+    }
+
     static func == (lhs: Story, rhs: Story) -> Bool {
         return lhs.id == rhs.id
     }
