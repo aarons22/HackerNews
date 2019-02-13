@@ -5,6 +5,7 @@ target 'HackerNews' do
 
   pod 'Alamofire'
   pod 'RxSwift'
+  pod 'RxCocoa'
   pod 'SnapKit'
 
   target 'HackerNewsTests' do

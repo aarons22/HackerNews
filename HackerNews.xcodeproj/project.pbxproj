@@ -15,6 +15,14 @@
 		C0C0D2642213B2C4001AA671 /* HackerNewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2632213B2C4001AA671 /* HackerNewsTests.swift */; };
 		C0C0D26F2213B31C001AA671 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D26E2213B31C001AA671 /* FeedViewController.swift */; };
 		C0C0D2702213B31C001AA671 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D26E2213B31C001AA671 /* FeedViewController.swift */; };
+		C0C0D2742213B48A001AA671 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2732213B48A001AA671 /* Story.swift */; };
+		C0C0D2752213B48C001AA671 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2732213B48A001AA671 /* Story.swift */; };
+		C0C0D2782213B50C001AA671 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2772213B50C001AA671 /* ItemRepository.swift */; };
+		C0C0D2792213B50C001AA671 /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2772213B50C001AA671 /* ItemRepository.swift */; };
+		C0C0D27C2213B7C2001AA671 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D27B2213B7C2001AA671 /* FeedViewModel.swift */; };
+		C0C0D27D2213B7C2001AA671 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D27B2213B7C2001AA671 /* FeedViewModel.swift */; };
+		C0C0D2802213C009001AA671 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D27F2213C009001AA671 /* HTTP.swift */; };
+		C0C0D2812213C009001AA671 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D27F2213C009001AA671 /* HTTP.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +51,10 @@
 		C0C0D2632213B2C4001AA671 /* HackerNewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsTests.swift; sourceTree = "<group>"; };
 		C0C0D2652213B2C4001AA671 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0C0D26E2213B31C001AA671 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		C0C0D2732213B48A001AA671 /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		C0C0D2772213B50C001AA671 /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
+		C0C0D27B2213B7C2001AA671 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		C0C0D27F2213C009001AA671 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +121,9 @@
 			isa = PBXGroup;
 			children = (
 				C0C0D2722213B3B4001AA671 /* Models */,
+				C0C0D2762213B4F5001AA671 /* Repositories */,
+				C0C0D27E2213B8C8001AA671 /* Helpers */,
+				C0C0D27A2213B7B8001AA671 /* ViewModels */,
 				C0C0D2712213B3A2001AA671 /* Controllers */,
 				C0C0D24E2213B2C2001AA671 /* AppDelegate.swift */,
 				C0C0D2552213B2C4001AA671 /* Assets.xcassets */,
@@ -138,8 +153,33 @@
 		C0C0D2722213B3B4001AA671 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C0C0D2732213B48A001AA671 /* Story.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C0C0D2762213B4F5001AA671 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				C0C0D2772213B50C001AA671 /* ItemRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		C0C0D27A2213B7B8001AA671 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C0C0D27B2213B7C2001AA671 /* FeedViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C0C0D27E2213B8C8001AA671 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C0C0D27F2213C009001AA671 /* HTTP.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +314,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-HackerNews/Pods-HackerNews-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
@@ -283,6 +324,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -320,8 +362,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0C0D27C2213B7C2001AA671 /* FeedViewModel.swift in Sources */,
 				C0C0D26F2213B31C001AA671 /* FeedViewController.swift in Sources */,
 				C0C0D24F2213B2C2001AA671 /* AppDelegate.swift in Sources */,
+				C0C0D2802213C009001AA671 /* HTTP.swift in Sources */,
+				C0C0D2782213B50C001AA671 /* ItemRepository.swift in Sources */,
+				C0C0D2742213B48A001AA671 /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,8 +375,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0C0D27D2213B7C2001AA671 /* FeedViewModel.swift in Sources */,
 				C0C0D2702213B31C001AA671 /* FeedViewController.swift in Sources */,
 				C0C0D2642213B2C4001AA671 /* HackerNewsTests.swift in Sources */,
+				C0C0D2812213C009001AA671 /* HTTP.swift in Sources */,
+				C0C0D2792213B50C001AA671 /* ItemRepository.swift in Sources */,
+				C0C0D2752213B48C001AA671 /* Story.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

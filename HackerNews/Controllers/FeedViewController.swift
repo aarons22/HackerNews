@@ -9,7 +9,10 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    init() {
+    let viewModel: FeedViewModelProtocol
+
+    init(viewModel: FeedViewModelProtocol = FeedViewModel()) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -20,5 +23,7 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.green
+
+        viewModel.getTopStories()
     }
 }
