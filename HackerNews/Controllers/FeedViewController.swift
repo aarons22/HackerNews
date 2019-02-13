@@ -62,7 +62,7 @@ class FeedViewController: UIViewController {
 }
 
 extension FeedViewController: FeedViewModelDelegate {
-    func displayStory(_ story: Story) {
+    func displayStory(_ story: Item) {
         if let url = story.url {
             let viewController = WebViewController(url: url)
             let navController = NavigationController(rootViewController: viewController)

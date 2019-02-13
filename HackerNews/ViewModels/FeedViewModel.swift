@@ -10,11 +10,11 @@ import RxSwift
 import RxCocoa
 
 protocol FeedViewModelDelegate: class {
-    func displayStory(_ story: Story)
+    func displayStory(_ story: Item)
 }
 
 protocol FeedViewModelProtocol: UITableViewDelegate, UITableViewDataSource {
-    var stories: Variable<[Story]> { get }
+    var stories: Variable<[Item]> { get }
     var delegate: FeedViewModelDelegate? { get set }
 
     func getTopStories()
@@ -25,7 +25,7 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
     weak var delegate: FeedViewModelDelegate?
 
     private let newStoryIds = Variable<[Int]>([])
-    let stories = Variable<[Story]>([])
+    let stories = Variable<[Item]>([])
 
     private let disposeBag = DisposeBag()
 
@@ -55,6 +55,9 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
         for i in 0...limit {
             let id = self.newStoryIds.value[i]
             self.getItem(id)
+            self.itemRepository.getItem(id) { (item) in
+                self.stories.value.append(item)
+            }
         }
     }
 

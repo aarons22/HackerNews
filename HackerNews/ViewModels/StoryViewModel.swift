@@ -9,13 +9,13 @@
 import Foundation
 
 protocol StoryViewModelProtocol: class {
-    var story: Story { get }
+    var story: Item { get }
 }
 
 class StoryViewModel: NSObject, StoryViewModelProtocol {
-    let story: Story
+    let story: Item
 
-    init(_ story: Story) {
+    init(_ story: Item) {
         self.story = story
         super.init()
     }

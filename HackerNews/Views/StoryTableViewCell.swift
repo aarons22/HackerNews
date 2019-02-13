@@ -68,7 +68,7 @@ class StoryTableViewCell: UITableViewCell {
         self.urlLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
     }
 
-    func display(_ story: Story) {
+    func display(_ story: Item) {
         self.titleLabel.text = story.title
         self.pointsLabel.text = story.points
         self.byLabel.text = "by \(story.by)"

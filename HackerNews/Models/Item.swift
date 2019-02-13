@@ -8,15 +8,25 @@
 
 import Foundation
 
-class Story: Codable, Equatable {
+enum ItemType: String, Codable {
+    case story
+    case comment
+}
+
+class Item: Codable, Equatable {
     let id: Int
-    let by: String
-    let descendants: Int
-    let score: Int
-    let time: Date
-    let title: String
+    let kids: [Int]?
     let text: String?
     let url: URL?
+    let parent: Int?
+    let title: String?
+
+    // For the purposes of this project, we're only using stories and comments
+    // which have all of these properties
+    let type: ItemType
+    let by: String
+    let score: Int
+    let time: Date
 
     var points: String {
         var descriptor = "points"
@@ -26,12 +36,8 @@ class Story: Codable, Equatable {
         return "\(self.score) \(descriptor)"
     }
 
-    var urlHost: String? {
-        if let url = self.url,
-            let components = URLComponents(url: url, resolvingAgainstBaseURL: true) {
-            return components.host?.replacingOccurrences(of: "www.", with: "")
-        }
-        return nil
+    var subtitle: String {
+        return "\(self.points) by \(by)"
     }
 
     var body: String? {
@@ -50,11 +56,19 @@ class Story: Codable, Equatable {
         return attributedString.string
     }
 
-    var subtitle: String {
-        return "\(self.points) by \(by)"
+    // MARK: - Story
+
+    var urlHost: String? {
+        if let url = self.url,
+            let components = URLComponents(url: url, resolvingAgainstBaseURL: true) {
+            return components.host?.replacingOccurrences(of: "www.", with: "")
+        }
+        return nil
     }
 
-    static func == (lhs: Story, rhs: Story) -> Bool {
+    // MARK: - Equatable
+    
+    static func == (lhs: Item, rhs: Item) -> Bool {
         return lhs.id == rhs.id
     }
 }

@@ -11,7 +11,7 @@ import Alamofire
 
 protocol ItemRepositoryProtocol {
     func getTopStories(completion: @escaping ([Int]) -> Void)
-    func getItem(_ id: Int, completion: @escaping (Story) -> Void)
+    func getItem(_ id: Int, completion: @escaping (Item) -> Void)
 }
 
 class ItemRepository: ItemRepositoryProtocol {
@@ -23,7 +23,7 @@ class ItemRepository: ItemRepositoryProtocol {
     }
 
     func getTopStories(completion: @escaping ([Int]) -> Void) {
-        self.http.request("https://hacker-news.firebaseio.com/v0/topstories.json") { [weak self] (result: Result<[Int]>) in
+        self.http.request("https://hacker-news.firebaseio.com/v0/newstories.json") { [weak self] (result: Result<[Int]>) in
             switch result {
             case .success(let ids):
                 completion(ids)
@@ -34,11 +34,11 @@ class ItemRepository: ItemRepositoryProtocol {
         }
     }
 
-    func getItem(_ id: Int, completion: @escaping (Story) -> Void) {
-        self.http.request("https://hacker-news.firebaseio.com/v0/item/\(id).json") { [weak self] (result: Result<Story>) in
+    func getItem(_ id: Int, completion: @escaping (Item) -> Void) {
+        self.http.request("https://hacker-news.firebaseio.com/v0/item/\(id).json") { [weak self] (result: Result<Item>) in
             switch result {
-            case .success(let story):
-                completion(story)
+            case .success(let item):
+                completion(item)
             case .failure(let error):
                 // TODO
                 break
