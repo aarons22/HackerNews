@@ -15,7 +15,16 @@ class Story: Codable, Equatable {
     let score: Int
     let time: Date
     let title: String
+    let text: String?
     let url: URL?
+
+    var points: String {
+        var descriptor = "points"
+        if self.score == 1 {
+            descriptor = "point"
+        }
+        return "\(self.score) \(descriptor)"
+    }
 
     var urlHost: String? {
         if let url = self.url,

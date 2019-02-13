@@ -70,7 +70,7 @@ class StoryTableViewCell: UITableViewCell {
 
     func display(_ story: Story) {
         self.titleLabel.text = story.title
-        self.pointsLabel.text = "\(story.score) points"
+        self.pointsLabel.text = story.points
         self.byLabel.text = "by \(story.by)"
         if let host = story.urlHost {
             self.urlLabel.text = "(via \(host))"
