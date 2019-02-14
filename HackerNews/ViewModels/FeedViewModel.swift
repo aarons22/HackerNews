@@ -39,7 +39,7 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
     private func addBindings() {
         self.storyIds.asObservable()
             .bind { [weak self] (ids) in
-                self?.getFirstStories()
+                self?.getStories()
             }.disposed(by: self.disposeBag)
     }
 
@@ -49,8 +49,10 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
         }
     }
 
-    private func getFirstStories() {
-        let limit = min(self.storyIds.value.count, 30)
+    private func getStories() {
+        // Only grabbing first 50 right. Ideally we'd paginate and
+        // load automatically on scroll, but too much effort for the timeframe
+        let limit = min(self.storyIds.value.count, 50)
         guard limit != 0 else { return }
 
         for i in 0...limit {
@@ -60,8 +62,16 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
     }
 
     private func getItem(_ id: Int) {
-        self.itemRepository.getItem(id) { (story) in
-            self.stories.value.append(story)
+        self.itemRepository.getItem(id) { [weak self] (story) in
+            self?.stories.value.append(story)
+
+            if story.url == nil {
+                // Lazy load comments for stories without a external link.
+                // Based on current approach to iterating through comments,
+                // stories with a link won't display comments until second viewing.
+                // Refactor this when we can reliably know when comments are fully loaded in view
+                self?.itemRepository.getChildren(story)
+            }
         }
     }
 

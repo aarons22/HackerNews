@@ -40,7 +40,7 @@ class StoryTableViewCell: UITableViewCell {
     private func setupTitleLabel() {
         self.stackView.addArrangedSubview(self.titleLabel)
         self.titleLabel.numberOfLines = 2
-        self.titleLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.medium)
+        self.titleLabel.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.medium)
     }
 
     private func setupLowerStackView() {
