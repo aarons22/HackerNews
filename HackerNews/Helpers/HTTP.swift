@@ -31,9 +31,13 @@ class HTTP: HTTPProtocol {
                 switch response.result {
                 case .success:
                     OperationQueue().addOperation({
-                        if let data = response.data,
-                            let mapped = try? JSONDecoder().decode(I.self, from: data) {
-                            completion(.success(mapped))
+                        if let data = response.data {
+                            do {
+                                let mapped = try JSONDecoder().decode(I.self, from: data)
+                                completion(.success(mapped))
+                            } catch {
+                                completion(.failure(error))
+                            }
                         } else {
                             // TODO
 //                            completion(.failure(""))
