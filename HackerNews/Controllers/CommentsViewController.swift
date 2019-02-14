@@ -20,13 +20,18 @@ class CommentsViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
 
-        self.setupScrollView()
-
-        self.commentsView.display(viewModel.story.children)
+        self.title = "Comments"
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.setupScrollView()
+        self.commentsView.display(viewModel.story.children)
     }
 
     private func setupScrollView() {

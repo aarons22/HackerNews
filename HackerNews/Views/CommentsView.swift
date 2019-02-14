@@ -16,6 +16,7 @@ class CommentsView: UIView {
         super.init(frame: .zero)
 
         self.setupStackView()
+        self.setupIndentView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -32,6 +33,16 @@ class CommentsView: UIView {
 
         self.stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         self.stackView.isLayoutMarginsRelativeArrangement = true
+    }
+
+    private func setupIndentView() {
+        let indent = UIView()
+        self.stackView.addSubview(indent)
+        indent.snp.makeConstraints { (make) in
+            make.top.bottom.left.equalToSuperview()
+            make.width.equalTo(1)
+        }
+        indent.backgroundColor = Colors.gray200
     }
 
     func display(_ comments: [Item]) {

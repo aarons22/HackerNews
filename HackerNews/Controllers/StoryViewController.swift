@@ -87,7 +87,7 @@ class StoryViewController: UIViewController {
 
     private func setupCommentsTitleLabel() {
         self.stackView.addArrangedSubview(self.commentsTitleLabel)
-        self.commentsTitleLabel.text = "Comments"
+        self.commentsTitleLabel.text = self.viewModel.story.hasKids ? "Comments" : "No Comments"
         self.commentsTitleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.heavy)
         self.commentsTitleLabel.textColor = Colors.gray400
     }

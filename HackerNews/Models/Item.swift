@@ -60,6 +60,10 @@ class Item: Codable, Equatable, Hashable {
         return Date(timeIntervalSince1970: TimeInterval(time))
     }
 
+    var hasKids: Bool {
+        return !(self.kids ?? []).isEmpty
+    }
+
     /// Likely comments, sorted by highest voted
     var children: [Item] {
         let items = DataManager.shared.items.value.filter({ self.kids?.contains($0.id) ?? false })

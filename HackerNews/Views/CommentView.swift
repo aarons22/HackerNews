@@ -24,7 +24,7 @@ class CommentView: UIView {
 
         self.setupStackView()
 
-        self.titleLabel.text = comment.by
+        self.titleLabel.text = "\(comment.by) \(comment.createdAt.getElapsedInterval()) ago"
         self.textLabel.text = comment.body
 
         self.childrenView.display(comment.children)
@@ -51,7 +51,7 @@ class CommentView: UIView {
         self.stackView.addArrangedSubview(self.titleLabel)
         self.titleLabel.numberOfLines = 0
         self.titleLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.bold)
-        self.titleLabel.textColor = UIColor.lightGray
+        self.titleLabel.textColor = Colors.gray400
     }
 
     private func setupTextView() {
