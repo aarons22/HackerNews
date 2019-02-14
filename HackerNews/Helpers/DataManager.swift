@@ -9,8 +9,8 @@
 import Foundation
 import RxSwift
 
+/// Central data store for all Item objects. 
 class DataManager: NSObject {
-
     static let shared = DataManager()
 
     let items = Variable<Set<Item>>([])

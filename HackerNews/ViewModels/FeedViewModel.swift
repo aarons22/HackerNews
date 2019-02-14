@@ -22,13 +22,17 @@ protocol FeedViewModelProtocol: UITableViewDelegate, UITableViewDataSource {
 }
 
 class FeedViewModel: NSObject, FeedViewModelProtocol {
+
+    // User Defined
     let itemRepository: ItemRepositoryProtocol
-    weak var delegate: FeedViewModelDelegate?
 
+    // Internal
     private let storyIds = Variable<[Int]>([])
-    let stories = Variable<[Item]>([])
-
     private let disposeBag = DisposeBag()
+
+    // External
+    let stories = Variable<[Item]>([])
+    weak var delegate: FeedViewModelDelegate?
 
     init(itemRepository: ItemRepositoryProtocol = ItemRepository()) {
         self.itemRepository = itemRepository
@@ -38,7 +42,7 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
 
     private func addBindings() {
         self.storyIds.asObservable()
-            .bind { [weak self] (ids) in
+            .bind { [weak self] (_) in
                 self?.getStories()
             }.disposed(by: self.disposeBag)
     }

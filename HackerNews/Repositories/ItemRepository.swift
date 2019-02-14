@@ -16,6 +16,7 @@ protocol ItemRepositoryProtocol {
 }
 
 class ItemRepository: ItemRepositoryProtocol {
+    // User defined
     private let http: HTTPProtocol
 
     init(http: HTTPProtocol = HTTP()) {

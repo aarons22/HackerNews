@@ -9,6 +9,7 @@
 import UIKit
 
 class StoryTableViewCell: UITableViewCell {
+    // UI
     let stackView = UIStackView()
     let lowerStackView = UIStackView()
     let titleLabel = UILabel()

@@ -12,11 +12,13 @@ import AwesomeEnum
 import MBProgressHUD
 
 class WebViewController: UIViewController, WKNavigationDelegate {
-    let webView = WKWebView()
+    // UI
+    private let webView = WKWebView()
+    private var backButton: BarButton!
+    private var forwardButton: BarButton!
 
+    // User Defined
     let story: Item
-    var backButton: BarButton!
-    var forwardButton: BarButton!
 
     init(url: URL, story: Item) {
         self.story = story
@@ -42,8 +44,9 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     }
 
     private func setupNavigationBar() {
-        // TODO: use custom icons
-        let done = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(close))
+        let done = BarButton(icon: Awesome.Solid.chevronDown,
+                             target: self,
+                             action: #selector(close))
         self.navigationItem.leftBarButtonItems = [done]
     }
 
@@ -70,6 +73,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         let comments = BarButton(icon: Awesome.Regular.commentAlt,
                                  target: self,
                                  action: #selector(self.showComments))
+        comments.isEnabled = self.story.hasKids
         let refresh = BarButton(icon: Awesome.Solid.redo,
                                 target: self.webView,
                                 action: #selector(self.webView.reload))

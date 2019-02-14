@@ -9,8 +9,10 @@
 import UIKit
 
 class StoryViewController: UIViewController {
+    // User Defined
     private let viewModel: StoryViewModelProtocol
 
+    // UI
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
     private let titleLabel = UILabel()
@@ -60,7 +62,9 @@ class StoryViewController: UIViewController {
         self.setupSubTitleLabel()
         self.setupBodyLabel()
         self.setupCommentsTitleLabel()
-        self.setupCommentsView()
+        if self.viewModel.story.hasKids {
+            self.setupCommentsView()
+        }
     }
 
     private func setupTitleLabel() {
@@ -93,8 +97,13 @@ class StoryViewController: UIViewController {
     }
 
     private func setupCommentsView() {
-        self.stackView.addArrangedSubview(self.commentsView)
-        self.commentsView.display(self.viewModel.story.children)
-        self.commentsView.backgroundColor = Colors.gray100
+        let container = UIView()
+        container.backgroundColor = Colors.gray100
+        container.addSubview(self.commentsView)
+        self.commentsView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview().inset(5)
+        }
+        self.stackView.addArrangedSubview(container)
+        self.commentsView.display(self.viewModel.story.children, isRoot: true)
     }
 }

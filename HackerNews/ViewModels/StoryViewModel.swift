@@ -13,6 +13,7 @@ protocol StoryViewModelProtocol: class {
 }
 
 class StoryViewModel: NSObject, StoryViewModelProtocol {
+    // User Defined
     let story: Item
 
     init(_ story: Item) {

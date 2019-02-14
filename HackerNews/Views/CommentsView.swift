@@ -11,6 +11,7 @@ import UIKit
 class CommentsView: UIView {
     // UI
     private let stackView = UIStackView()
+    private let conversationBreakView = UIView()
 
     init() {
         super.init(frame: .zero)
@@ -31,21 +32,24 @@ class CommentsView: UIView {
             make.edges.equalToSuperview()
         }
 
-        self.stackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         self.stackView.isLayoutMarginsRelativeArrangement = true
     }
 
     private func setupIndentView() {
-        let indent = UIView()
-        self.stackView.addSubview(indent)
-        indent.snp.makeConstraints { (make) in
+        self.stackView.addSubview(self.conversationBreakView)
+        self.conversationBreakView.snp.makeConstraints { (make) in
             make.top.bottom.left.equalToSuperview()
             make.width.equalTo(1)
         }
-        indent.backgroundColor = Colors.gray200
+        self.conversationBreakView.backgroundColor = Colors.gray200
     }
 
-    func display(_ comments: [Item]) {
+    func display(_ comments: [Item], isRoot: Bool) {
+        self.conversationBreakView.isHidden = isRoot
+
+        let indent: CGFloat = isRoot ? 0 : 15
+        self.stackView.layoutMargins = UIEdgeInsets(top: 0, left: indent, bottom: 0, right: 0)
+
         self.stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         for comment in comments {
             let commentView = CommentView(comment: comment)

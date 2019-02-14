@@ -12,10 +12,13 @@ import RxSwift
 import WebKit
 
 class FeedViewController: UIViewController {
+    // User Defined
     let viewModel: FeedViewModelProtocol
 
+    // UI
     let tableView = UITableView()
 
+    // Internal
     private let disposeBag = DisposeBag()
 
     init(viewModel: FeedViewModelProtocol = FeedViewModel()) {

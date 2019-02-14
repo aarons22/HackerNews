@@ -13,6 +13,7 @@ protocol CommentsViewModelProtocol {
 }
 
 class CommentsViewModel: NSObject, CommentsViewModelProtocol {
+    // User Defined
     let story: Item
 
     init(story: Item) {

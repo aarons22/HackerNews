@@ -31,7 +31,7 @@ class CommentsViewController: UIViewController {
         super.viewDidLoad()
 
         self.setupScrollView()
-        self.commentsView.display(viewModel.story.children)
+        self.commentsView.display(viewModel.story.children, isRoot: true)
     }
 
     private func setupScrollView() {
@@ -49,8 +49,7 @@ class CommentsViewController: UIViewController {
         self.scrollView.addSubview(self.commentsView)
         self.commentsView.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
-            make.left.equalTo(self.view)
-            make.right.equalTo(self.view).inset(10)
+            make.left.right.equalTo(self.view).inset(10)
         }
     }
 }

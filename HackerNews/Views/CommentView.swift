@@ -27,7 +27,7 @@ class CommentView: UIView {
         self.titleLabel.text = "\(comment.by) \(comment.createdAt.getElapsedInterval()) ago"
         self.textLabel.text = comment.body
 
-        self.childrenView.display(comment.children)
+        self.childrenView.display(comment.children, isRoot: false)
     }
 
     required init?(coder aDecoder: NSCoder) {

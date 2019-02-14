@@ -27,9 +27,6 @@ class HTTP: HTTPProtocol {
                             } catch {
                                 completion(.failure(error))
                             }
-                        } else {
-                            // TODO
-//                            completion(.failure(""))
                         }
                     })
                 case .failure(let error):
