@@ -10,7 +10,7 @@ import UIKit
 
 struct Colors {
     struct HackerNews {
-        static let orange = UIColor(red: 255, green: 102, blue: 0, alpha: 1)
-        static let background = UIColor(red: 246, green: 246, blue: 240, alpha: 1)
+        static let orange = UIColor(red: 255 / 255.0, green: 102 / 255.0, blue: 0, alpha: 1)
+        static let background = UIColor(red: 246 / 255.0, green: 246 / 255.0, blue: 240 / 255.0, alpha: 1)
     }
 }

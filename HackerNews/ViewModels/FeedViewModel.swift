@@ -14,6 +14,7 @@ protocol FeedViewModelDelegate: class {
 }
 
 protocol FeedViewModelProtocol: UITableViewDelegate, UITableViewDataSource {
+    var itemRepository: ItemRepositoryProtocol { get }
     var stories: Variable<[Item]> { get }
     var delegate: FeedViewModelDelegate? { get set }
 
@@ -21,7 +22,7 @@ protocol FeedViewModelProtocol: UITableViewDelegate, UITableViewDataSource {
 }
 
 class FeedViewModel: NSObject, FeedViewModelProtocol {
-    private let itemRepository: ItemRepositoryProtocol
+    let itemRepository: ItemRepositoryProtocol
     weak var delegate: FeedViewModelDelegate?
 
     private let storyIds = Variable<[Int]>([])
@@ -49,7 +50,7 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
     }
 
     private func getFirstStories() {
-        let limit = (min(self.storyIds.value.count, 30))
+        let limit = min(self.storyIds.value.count, 30)
         guard limit != 0 else { return }
 
         for i in 0...limit {

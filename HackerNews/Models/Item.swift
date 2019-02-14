@@ -53,13 +53,13 @@ class Item: Codable, Equatable, Hashable {
         guard let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else {
             return nil
         }
-        return attributedString.string
+        return attributedString.string.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
+    /// Likely comments, sorted by highest voted
     var children: [Item] {
         let items = DataManager.shared.items.value.filter({ self.kids?.contains($0.id) ?? false })
-
-        return Array(items)
+        return Array(items.sorted(by: { $0.points > $1.points }))
     }
 
     // MARK: - Story

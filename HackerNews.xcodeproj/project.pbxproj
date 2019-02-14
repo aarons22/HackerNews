@@ -37,6 +37,14 @@
 		C0C0D2942213D359001AA671 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2922213D359001AA671 /* StoryViewModel.swift */; };
 		C0C0D29C2214F62B001AA671 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D29B2214F62B001AA671 /* DataManager.swift */; };
 		C0C0D29D2214F62B001AA671 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D29B2214F62B001AA671 /* DataManager.swift */; };
+		C0C0D29F2214F970001AA671 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D29E2214F970001AA671 /* CommentsViewController.swift */; };
+		C0C0D2A02214F973001AA671 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D29E2214F970001AA671 /* CommentsViewController.swift */; };
+		C0C0D2A22214F9AE001AA671 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2A12214F9AE001AA671 /* CommentsViewModel.swift */; };
+		C0C0D2A32214F9AE001AA671 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2A12214F9AE001AA671 /* CommentsViewModel.swift */; };
+		C0C0D2A52214FF31001AA671 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2A42214FF31001AA671 /* CommentsView.swift */; };
+		C0C0D2A62214FF31001AA671 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2A42214FF31001AA671 /* CommentsView.swift */; };
+		C0C0D2A82214FF38001AA671 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2A72214FF38001AA671 /* CommentView.swift */; };
+		C0C0D2A92214FF38001AA671 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2A72214FF38001AA671 /* CommentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +84,10 @@
 		C0C0D28F2213D330001AA671 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		C0C0D2922213D359001AA671 /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
 		C0C0D29B2214F62B001AA671 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		C0C0D29E2214F970001AA671 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		C0C0D2A12214F9AE001AA671 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		C0C0D2A42214FF31001AA671 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		C0C0D2A72214FF38001AA671 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +183,7 @@
 				C0C0D2862213C899001AA671 /* NavigationController.swift */,
 				C0C0D2892213CA4E001AA671 /* WebViewController.swift */,
 				C0C0D28F2213D330001AA671 /* StoryViewController.swift */,
+				C0C0D29E2214F970001AA671 /* CommentsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -196,6 +209,7 @@
 			children = (
 				C0C0D27B2213B7C2001AA671 /* FeedViewModel.swift */,
 				C0C0D2922213D359001AA671 /* StoryViewModel.swift */,
+				C0C0D2A12214F9AE001AA671 /* CommentsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -214,6 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				C0C0D2832213C26D001AA671 /* StoryTableViewCell.swift */,
+				C0C0D2A42214FF31001AA671 /* CommentsView.swift */,
+				C0C0D2A72214FF38001AA671 /* CommentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -350,6 +366,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-HackerNews/Pods-HackerNews-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AwesomeEnum/AwesomeEnum.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -362,6 +379,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AwesomeEnum.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -402,8 +420,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0C0D2A22214F9AE001AA671 /* CommentsViewModel.swift in Sources */,
+				C0C0D2A82214FF38001AA671 /* CommentView.swift in Sources */,
 				C0C0D2932213D359001AA671 /* StoryViewModel.swift in Sources */,
 				C0C0D27C2213B7C2001AA671 /* FeedViewModel.swift in Sources */,
+				C0C0D29F2214F970001AA671 /* CommentsViewController.swift in Sources */,
 				C0C0D28D2213CDCA001AA671 /* Colors.swift in Sources */,
 				C0C0D28A2213CA4E001AA671 /* WebViewController.swift in Sources */,
 				C0C0D2872213C899001AA671 /* NavigationController.swift in Sources */,
@@ -414,6 +435,7 @@
 				C0C0D2902213D330001AA671 /* StoryViewController.swift in Sources */,
 				C0C0D2742213B48A001AA671 /* Item.swift in Sources */,
 				C0C0D29C2214F62B001AA671 /* DataManager.swift in Sources */,
+				C0C0D2A52214FF31001AA671 /* CommentsView.swift in Sources */,
 				C0C0D2842213C26D001AA671 /* StoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,8 +444,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0C0D2A32214F9AE001AA671 /* CommentsViewModel.swift in Sources */,
+				C0C0D2A92214FF38001AA671 /* CommentView.swift in Sources */,
 				C0C0D2942213D359001AA671 /* StoryViewModel.swift in Sources */,
 				C0C0D27D2213B7C2001AA671 /* FeedViewModel.swift in Sources */,
+				C0C0D2A02214F973001AA671 /* CommentsViewController.swift in Sources */,
 				C0C0D28E2213CDCA001AA671 /* Colors.swift in Sources */,
 				C0C0D28B2213CA4E001AA671 /* WebViewController.swift in Sources */,
 				C0C0D2882213C899001AA671 /* NavigationController.swift in Sources */,
@@ -434,6 +459,7 @@
 				C0C0D2912213D330001AA671 /* StoryViewController.swift in Sources */,
 				C0C0D2752213B48C001AA671 /* Item.swift in Sources */,
 				C0C0D29D2214F62B001AA671 /* DataManager.swift in Sources */,
+				C0C0D2A62214FF31001AA671 /* CommentsView.swift in Sources */,
 				C0C0D2852213C26D001AA671 /* StoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

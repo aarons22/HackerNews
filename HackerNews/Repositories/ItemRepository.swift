@@ -12,6 +12,7 @@ import Alamofire
 protocol ItemRepositoryProtocol {
     func getTopStories(completion: @escaping ([Int]) -> Void)
     func getItem(_ id: Int, completion: @escaping (Item) -> Void)
+    func getChildren(_ item: Item)
 }
 
 class ItemRepository: ItemRepositoryProtocol {
@@ -23,30 +24,29 @@ class ItemRepository: ItemRepositoryProtocol {
     }
 
     func getTopStories(completion: @escaping ([Int]) -> Void) {
-        self.http.request("https://hacker-news.firebaseio.com/v0/topstories.json") { [weak self] (result: Result<[Int]>) in
+        self.http.request("https://hacker-news.firebaseio.com/v0/topstories.json") { (result: Result<[Int]>) in
             switch result {
             case .success(let ids):
                 completion(ids)
             case .failure(let error):
-                log.error(error.localizedDescription)
+                consoleLog.error(error.localizedDescription)
             }
         }
     }
 
     func getItem(_ id: Int, completion: @escaping (Item) -> Void) {
-        self.http.request("https://hacker-news.firebaseio.com/v0/item/\(id).json") { [weak self] (result: Result<Item>) in
+        self.http.request("https://hacker-news.firebaseio.com/v0/item/\(id).json") { (result: Result<Item>) in
             switch result {
             case .success(let item):
                 DataManager.shared.items.value.insert(item)
                 completion(item)
-                self?.getChildren(item)
             case .failure(let error):
-                log.error(error.localizedDescription)
+                consoleLog.error(error.localizedDescription)
             }
         }
     }
 
-    private func getChildren(_ item: Item) {
+    func getChildren(_ item: Item) {
         if let kids = item.kids {
             for id in kids {
                 self.getItem(id) { (kid) in

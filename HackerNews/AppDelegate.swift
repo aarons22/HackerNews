@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyBeaver
 
-let log = SwiftyBeaver.self
+let consoleLog = SwiftyBeaver.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = NavigationController(rootViewController: FeedViewController())
         window?.makeKeyAndVisible()
 
-        log.addDestination(ConsoleDestination())
+        consoleLog.addDestination(ConsoleDestination())
         
         return true
     }

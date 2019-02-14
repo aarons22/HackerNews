@@ -12,7 +12,10 @@ import WebKit
 class WebViewController: UIViewController, WKNavigationDelegate {
     let webView = WKWebView()
 
-    init(url: URL) {
+    let story: Item
+
+    init(url: URL, story: Item) {
+        self.story = story
         super.init(nibName: nil, bundle: nil)
 
         let request = URLRequest(url: url)
@@ -55,14 +58,23 @@ class WebViewController: UIViewController, WKNavigationDelegate {
                                       target: self.webView,
                                       action: #selector(self.webView.goForward))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let comments = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.bookmarks,
+                                      target: self,
+                                      action: #selector(self.showComments))
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh,
                                       target: self.webView,
                                       action: #selector(self.webView.reload))
 
-        self.toolbarItems = [back, forward, spacer, refresh]
+        self.toolbarItems = [back, forward, spacer, comments, spacer, refresh]
     }
 
-    @objc func close() {
+    @objc private func close() {
         self.dismiss(animated: true, completion: nil)
+    }
+
+    @objc private func showComments() {
+        let viewModel = CommentsViewModel(story: self.story)
+        let viewController = CommentsViewController(viewModel: viewModel)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

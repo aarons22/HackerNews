@@ -9,6 +9,7 @@ target 'HackerNews' do
   pod 'SnapKit'
   pod 'SwiftyBeaver'
   pod 'AwesomeEnum'
+  pod 'MBProgressHUD'
 
   target 'HackerNewsTests' do
     inherit! :search_paths
