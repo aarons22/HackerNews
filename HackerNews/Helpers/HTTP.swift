@@ -9,22 +9,11 @@
 import Alamofire
 
 protocol HTTPProtocol {
-    func request(_ url: String, completion: @escaping (Result<Any>) -> Void)
-    func request<I: Decodable>(_ urlString: String, completion: @escaping (_ result: Result<I>) -> Void)
+    func request<I: Decodable>(_ request: URLRequest, completion: @escaping (_ result: Result<I>) -> Void)
 }
 
 class HTTP: HTTPProtocol {
-    func request(_ url: String, completion: @escaping (Result<Any>) -> Void) {
-        Alamofire
-            .request(url)
-            .responseJSON { (response) in
-                completion(response.result)
-        }
-    }
-
-    func request<I: Decodable>(_ urlString: String, completion: @escaping (Result<I>) -> Void) {
-        guard let url = URL(string: urlString) else { return }
-        let request = URLRequest(url: url)
+    func request<I: Decodable>(_ request: URLRequest, completion: @escaping (Result<I>) -> Void) {
         Alamofire
             .request(request as URLRequestConvertible)
             .responseJSON { (response) in

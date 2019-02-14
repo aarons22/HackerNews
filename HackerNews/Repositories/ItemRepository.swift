@@ -17,14 +17,15 @@ protocol ItemRepositoryProtocol {
 
 class ItemRepository: ItemRepositoryProtocol {
     private let http: HTTPProtocol
-    private let decoder = JSONDecoder()
 
     init(http: HTTPProtocol = HTTP()) {
         self.http = http
     }
 
     func getTopStories(completion: @escaping ([Int]) -> Void) {
-        self.http.request("https://hacker-news.firebaseio.com/v0/topstories.json") { (result: Result<[Int]>) in
+        guard let url = URL(string: "https://hacker-news.firebaseio.com/v0/topstories.json") else { return }
+        let request = URLRequest(url: url)
+        self.http.request(request) { (result: Result<[Int]>) in
             switch result {
             case .success(let ids):
                 completion(ids)
@@ -35,7 +36,9 @@ class ItemRepository: ItemRepositoryProtocol {
     }
 
     func getItem(_ id: Int, completion: @escaping (Item) -> Void) {
-        self.http.request("https://hacker-news.firebaseio.com/v0/item/\(id).json") { (result: Result<Item>) in
+        guard let url = URL(string: "https://hacker-news.firebaseio.com/v0/item/\(id).json") else { return }
+        let request = URLRequest(url: url)
+        self.http.request(request) { (result: Result<Item>) in
             switch result {
             case .success(let item):
                 DataManager.shared.items.value.insert(item)
