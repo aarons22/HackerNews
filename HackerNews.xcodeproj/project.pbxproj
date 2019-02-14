@@ -45,6 +45,8 @@
 		C0C0D2A62214FF31001AA671 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2A42214FF31001AA671 /* CommentsView.swift */; };
 		C0C0D2A82214FF38001AA671 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2A72214FF38001AA671 /* CommentView.swift */; };
 		C0C0D2A92214FF38001AA671 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2A72214FF38001AA671 /* CommentView.swift */; };
+		C0C0D2AC22150AFD001AA671 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2AB22150AFD001AA671 /* DateExtensions.swift */; };
+		C0C0D2AD22150AFD001AA671 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2AB22150AFD001AA671 /* DateExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,7 @@
 		C0C0D2A12214F9AE001AA671 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		C0C0D2A42214FF31001AA671 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		C0C0D2A72214FF38001AA671 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		C0C0D2AB22150AFD001AA671 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,7 @@
 		C0C0D24D2213B2C2001AA671 /* HackerNews */ = {
 			isa = PBXGroup;
 			children = (
+				C0C0D2AA22150AEB001AA671 /* Extensions */,
 				C0C0D2822213C25B001AA671 /* Views */,
 				C0C0D2722213B3B4001AA671 /* Models */,
 				C0C0D2762213B4F5001AA671 /* Repositories */,
@@ -232,6 +236,14 @@
 				C0C0D2A72214FF38001AA671 /* CommentView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C0C0D2AA22150AEB001AA671 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C0C0D2AB22150AFD001AA671 /* DateExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +437,7 @@
 				C0C0D2932213D359001AA671 /* StoryViewModel.swift in Sources */,
 				C0C0D27C2213B7C2001AA671 /* FeedViewModel.swift in Sources */,
 				C0C0D29F2214F970001AA671 /* CommentsViewController.swift in Sources */,
+				C0C0D2AC22150AFD001AA671 /* DateExtensions.swift in Sources */,
 				C0C0D28D2213CDCA001AA671 /* Colors.swift in Sources */,
 				C0C0D28A2213CA4E001AA671 /* WebViewController.swift in Sources */,
 				C0C0D2872213C899001AA671 /* NavigationController.swift in Sources */,
@@ -449,6 +462,7 @@
 				C0C0D2942213D359001AA671 /* StoryViewModel.swift in Sources */,
 				C0C0D27D2213B7C2001AA671 /* FeedViewModel.swift in Sources */,
 				C0C0D2A02214F973001AA671 /* CommentsViewController.swift in Sources */,
+				C0C0D2AD22150AFD001AA671 /* DateExtensions.swift in Sources */,
 				C0C0D28E2213CDCA001AA671 /* Colors.swift in Sources */,
 				C0C0D28B2213CA4E001AA671 /* WebViewController.swift in Sources */,
 				C0C0D2882213C899001AA671 /* NavigationController.swift in Sources */,

@@ -47,6 +47,9 @@ class ItemRepository: ItemRepositoryProtocol {
     }
 
     func getChildren(_ item: Item) {
+        // Current approach doesn't provide any concrete way to know when
+        // all comments are loaded, but _most_ stories should have all comments
+        // loaded by the time a user opens the comments
         if let kids = item.kids {
             for id in kids {
                 self.getItem(id) { (kid) in

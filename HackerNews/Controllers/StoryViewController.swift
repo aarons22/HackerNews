@@ -16,6 +16,8 @@ class StoryViewController: UIViewController {
     private let titleLabel = UILabel()
     private let subTitleLabel = UILabel()
     private let bodyLabel = UILabel()
+    private let commentsTitleLabel = UILabel()
+    private let commentsView = CommentsView()
 
     init(viewModel: StoryViewModelProtocol) {
         self.viewModel = viewModel
@@ -29,15 +31,16 @@ class StoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = Colors.HackerNews.background
         self.setupScrollView()
     }
 
     private func setupScrollView() {
         self.view.addSubview(self.scrollView)
         self.scrollView.alwaysBounceVertical = true
+        self.scrollView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         self.scrollView.snp.makeConstraints { (make) in
-            make.top.bottom.equalToSuperview().inset(10)
+            make.top.bottom.equalToSuperview()
             make.left.right.equalToSuperview()
         }
 
@@ -50,12 +53,14 @@ class StoryViewController: UIViewController {
         self.stackView.spacing = 10
         self.stackView.snp.makeConstraints { (make) in
             make.top.bottom.equalToSuperview()
-            make.left.right.equalTo(self.view).inset(10)
+            make.left.right.equalTo(self.view).inset(15)
         }
 
         self.setupTitleLabel()
         self.setupSubTitleLabel()
         self.setupBodyLabel()
+        self.setupCommentsTitleLabel()
+        self.setupCommentsView()
     }
 
     private func setupTitleLabel() {
@@ -78,5 +83,18 @@ class StoryViewController: UIViewController {
         if let body = self.viewModel.story.body {
             self.bodyLabel.text = body
         }
+    }
+
+    private func setupCommentsTitleLabel() {
+        self.stackView.addArrangedSubview(self.commentsTitleLabel)
+        self.commentsTitleLabel.text = "Comments"
+        self.commentsTitleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.heavy)
+        self.commentsTitleLabel.textColor = Colors.gray400
+    }
+
+    private func setupCommentsView() {
+        self.stackView.addArrangedSubview(self.commentsView)
+        self.commentsView.display(self.viewModel.story.children)
+        self.commentsView.backgroundColor = Colors.gray100
     }
 }

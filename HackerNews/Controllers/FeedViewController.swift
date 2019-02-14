@@ -63,12 +63,11 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: FeedViewModelDelegate {
     func displayStory(_ story: Item) {
+        self.viewModel.itemRepository.getChildren(story)
         if let url = story.url {
             let viewController = WebViewController(url: url, story: story)
             let navController = NavigationController(rootViewController: viewController)
             self.navigationController?.present(navController, animated: true, completion: nil)
-
-            self.viewModel.itemRepository.getChildren(story)
         } else {
             let viewModel = StoryViewModel(story)
             let viewController = StoryViewController(viewModel: viewModel)

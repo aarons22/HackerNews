@@ -26,7 +26,7 @@ class Item: Codable, Equatable, Hashable {
     // which have all of these properties
     let type: ItemType
     let by: String
-    let time: Date
+    let time: Int
 
     var points: String {
         var descriptor = "points"
@@ -37,7 +37,7 @@ class Item: Codable, Equatable, Hashable {
     }
 
     var subtitle: String {
-        return "\(self.points) by \(by)"
+        return "\(points) by \(by) \(createdAt.getElapsedInterval()) ago"
     }
 
     var body: String? {
@@ -54,6 +54,10 @@ class Item: Codable, Equatable, Hashable {
             return nil
         }
         return attributedString.string.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    var createdAt: Date {
+        return Date(timeIntervalSince1970: TimeInterval(time))
     }
 
     /// Likely comments, sorted by highest voted

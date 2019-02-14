@@ -12,7 +12,7 @@ class StoryTableViewCell: UITableViewCell {
     let stackView = UIStackView()
     let lowerStackView = UIStackView()
     let titleLabel = UILabel()
-    let pointsLabel = UILabel()
+    let subtitleLabel = UILabel()
     let byLabel = UILabel()
     let urlLabel = UILabel()
 
@@ -40,7 +40,7 @@ class StoryTableViewCell: UITableViewCell {
     private func setupTitleLabel() {
         self.stackView.addArrangedSubview(self.titleLabel)
         self.titleLabel.numberOfLines = 2
-        self.titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
+        self.titleLabel.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.medium)
     }
 
     private func setupLowerStackView() {
@@ -49,29 +49,24 @@ class StoryTableViewCell: UITableViewCell {
         self.lowerStackView.spacing = 5
         self.lowerStackView.distribution = .equalCentering
 
-        self.setupPointsLabel()
-        self.setupByLabelLabel()
+        self.setupSubtitleLabel()
         self.setupURLLabel()
     }
 
-    private func setupPointsLabel() {
-        self.lowerStackView.addArrangedSubview(self.pointsLabel)
-        self.pointsLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
-    }
-
-    private func setupByLabelLabel() {
-        self.lowerStackView.addArrangedSubview(self.byLabel)
+    private func setupSubtitleLabel() {
+        self.lowerStackView.addArrangedSubview(self.subtitleLabel)
+        self.subtitleLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
     }
 
     private func setupURLLabel() {
         self.lowerStackView.addArrangedSubview(self.urlLabel)
-        self.urlLabel.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.light)
+        self.urlLabel.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
+        self.urlLabel.textColor = UIColor.lightGray
     }
 
     func display(_ story: Item) {
         self.titleLabel.text = story.title
-        self.pointsLabel.text = story.points
-        self.byLabel.text = "by \(story.by)"
+        self.subtitleLabel.text = story.subtitle
         if let host = story.urlHost {
             self.urlLabel.text = "(via \(host))"
             self.urlLabel.isHidden = false
