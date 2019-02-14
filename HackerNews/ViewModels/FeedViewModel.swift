@@ -61,23 +61,6 @@ class FeedViewModel: NSObject, FeedViewModelProtocol {
     private func getItem(_ id: Int) {
         self.itemRepository.getItem(id) { (story) in
             self.stories.value.append(story)
-
-            self.getChildren(story)
-        }
-    }
-
-    private func getChildren(_ item: Item) {
-        if let kids = item.kids {
-            for id in kids {
-                self.itemRepository.getItem(id) { (kid) in
-                    if item.children != nil {
-                        item.children?.append(kid)
-                    } else {
-                        item.children = [kid]
-                    }
-                    self.getChildren(kid)
-                }
-            }
         }
     }
 

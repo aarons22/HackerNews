@@ -13,7 +13,7 @@ enum ItemType: String, Codable {
     case comment
 }
 
-class Item: Codable, Equatable {
+class Item: Codable, Equatable, Hashable {
     let id: Int
     let kids: [Int]?
     let text: String?
@@ -21,8 +21,6 @@ class Item: Codable, Equatable {
     let parent: Int?
     let title: String?
     let score: Int?
-
-    var children: [Item]? = [Item]()
 
     // For the purposes of this project, we're only using stories and comments
     // which have all of these properties
@@ -58,6 +56,12 @@ class Item: Codable, Equatable {
         return attributedString.string
     }
 
+    var children: [Item] {
+        let items = DataManager.shared.items.value.filter({ self.kids?.contains($0.id) ?? false })
+
+        return Array(items)
+    }
+
     // MARK: - Story
 
     var urlHost: String? {
@@ -66,6 +70,12 @@ class Item: Codable, Equatable {
             return components.host?.replacingOccurrences(of: "www.", with: "")
         }
         return nil
+    }
+
+    // MARK: - Hashable
+
+    var hashValue: Int {
+        return self.id
     }
 
     // MARK: - Equatable

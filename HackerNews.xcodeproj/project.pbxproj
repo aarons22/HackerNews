@@ -35,6 +35,8 @@
 		C0C0D2912213D330001AA671 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D28F2213D330001AA671 /* StoryViewController.swift */; };
 		C0C0D2932213D359001AA671 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2922213D359001AA671 /* StoryViewModel.swift */; };
 		C0C0D2942213D359001AA671 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D2922213D359001AA671 /* StoryViewModel.swift */; };
+		C0C0D29C2214F62B001AA671 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D29B2214F62B001AA671 /* DataManager.swift */; };
+		C0C0D29D2214F62B001AA671 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C0D29B2214F62B001AA671 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,7 @@
 		C0C0D28C2213CDCA001AA671 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C0C0D28F2213D330001AA671 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
 		C0C0D2922213D359001AA671 /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
+		C0C0D29B2214F62B001AA671 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +205,7 @@
 			children = (
 				C0C0D27F2213C009001AA671 /* HTTP.swift */,
 				C0C0D28C2213CDCA001AA671 /* Colors.swift */,
+				C0C0D29B2214F62B001AA671 /* DataManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -345,20 +349,24 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HackerNews/Pods-HackerNews-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AwesomeEnum/AwesomeEnum.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AwesomeEnum.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -405,6 +413,7 @@
 				C0C0D2782213B50C001AA671 /* ItemRepository.swift in Sources */,
 				C0C0D2902213D330001AA671 /* StoryViewController.swift in Sources */,
 				C0C0D2742213B48A001AA671 /* Item.swift in Sources */,
+				C0C0D29C2214F62B001AA671 /* DataManager.swift in Sources */,
 				C0C0D2842213C26D001AA671 /* StoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +433,7 @@
 				C0C0D2792213B50C001AA671 /* ItemRepository.swift in Sources */,
 				C0C0D2912213D330001AA671 /* StoryViewController.swift in Sources */,
 				C0C0D2752213B48C001AA671 /* Item.swift in Sources */,
+				C0C0D29D2214F62B001AA671 /* DataManager.swift in Sources */,
 				C0C0D2852213C26D001AA671 /* StoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
