@@ -9,11 +9,14 @@
 import UIKit
 import WebKit
 import AwesomeEnum
+import MBProgressHUD
 
 class WebViewController: UIViewController, WKNavigationDelegate {
     let webView = WKWebView()
 
     let story: Item
+    var backButton: BarButton!
+    var forwardButton: BarButton!
 
     init(url: URL, story: Item) {
         self.story = story
@@ -47,18 +50,21 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     private func setupWebView() {
         self.view.addSubview(self.webView)
         self.webView.allowsBackForwardNavigationGestures = true
+        self.webView.navigationDelegate = self
         self.webView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }
 
     private func setupToolBar() {
-        let back = BarButton(icon: Awesome.Solid.chevronLeft,
-                             target: self.webView,
-                             action: #selector(self.webView.goBack))
-        let forward = BarButton(icon: Awesome.Solid.chevronRight,
-                             target: self.webView,
-                             action: #selector(self.webView.goForward))
+        self.backButton = BarButton(icon: Awesome.Solid.chevronLeft,
+                                    target: self.webView,
+                                    action: #selector(self.webView.goBack))
+        self.backButton.isEnabled = false
+        self.forwardButton = BarButton(icon: Awesome.Solid.chevronRight,
+                                       target: self.webView,
+                                       action: #selector(self.webView.goForward))
+        self.forwardButton.isEnabled = false
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
         let comments = BarButton(icon: Awesome.Regular.commentAlt,
@@ -68,17 +74,33 @@ class WebViewController: UIViewController, WKNavigationDelegate {
                                 target: self.webView,
                                 action: #selector(self.webView.reload))
 
-        self.toolbarItems = [back, forward, spacer, comments, spacer, refresh]
+        self.toolbarItems = [self.backButton, self.forwardButton, spacer, comments, spacer, refresh]
     }
 
     @objc private func close() {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @objc private func back() {
+        if self.webView.canGoBack {
+            self.webView.go
+        }
+    }
+
     @objc private func showComments() {
         let viewModel = CommentsViewModel(story: self.story)
         let viewController = CommentsViewController(viewModel: viewModel)
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        MBProgressHUD.showAdded(to: self.view, animated: false)
+    }
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        MBProgressHUD.hide(for: self.view, animated: false)
+        self.backButton.isEnabled = webView.canGoBack
+        self.forwardButton.isEnabled = webView.canGoForward
     }
 }
 
