@@ -7,6 +7,8 @@ target 'HackerNews' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'SnapKit'
+  pod 'SwiftyBeaver'
+  pod 'AwesomeEnum'
 
   target 'HackerNewsTests' do
     inherit! :search_paths

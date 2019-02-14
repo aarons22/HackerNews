@@ -24,3 +24,5 @@ xcuserdata/
 
 Pods/
 *.xcworkspace
+HackerNews.xcodeproj/xcuserdata/aaronsapp.xcuserdatad/xcschemes/xcschememanagement.plist
+*.xcodeproj/xcuserdata
